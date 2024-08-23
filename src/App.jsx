@@ -81,7 +81,20 @@ const [zombieFighters, setZombieFighters] = useState([
 
   return (
     <h1>Zombie Fighters</h1>
-  )
+    // <ul>
+    //   {zombieFighters.map((zombieFighter) => {
+    //     <li>
+    //       <img src={zombieFighter.img} alt="" />
+    //       <p>
+    //       Name: {zombieFighter.name} 
+    //       Price: {zombieFighter.price}
+    //       Strength: {zombieFighter.strength}
+    //       Agility: {zombieFighter.agility}
+    //       </p>
+    //     </li>
+    //   })};
+    // </ul>
+  );
 }
 
 export default App
