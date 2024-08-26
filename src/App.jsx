@@ -80,20 +80,30 @@ const [zombieFighters, setZombieFighters] = useState([
 ]);
 
   return (
+    <>
     <h1>Zombie Fighters</h1>
-    // <ul>
-    //   {zombieFighters.map((zombieFighter) => {
-    //     <li>
-    //       <img src={zombieFighter.img} alt="" />
-    //       <p>
-    //       Name: {zombieFighter.name} 
-    //       Price: {zombieFighter.price}
-    //       Strength: {zombieFighter.strength}
-    //       Agility: {zombieFighter.agility}
-    //       </p>
-    //     </li>
-    //   })};
-    // </ul>
+    <h2>Money: {money}</h2>
+    <ul>
+      {zombieFighters.map((zombieFighter, index) => (
+        <li key={index}>
+          <img src={zombieFighter.img} alt="image of fighter"/>
+          <h4>
+          Name: {zombieFighter.name}
+          </h4>
+          <h4>
+          Price: {zombieFighter.price}
+          </h4>
+          <h4>
+          Strength: {zombieFighter.strength}
+          </h4>
+          <h4>
+          Agility: {zombieFighter.agility}
+          </h4>
+          <button>Add</button>
+        </li>
+      ))}
+    </ul>
+    </>
   );
 }
 
