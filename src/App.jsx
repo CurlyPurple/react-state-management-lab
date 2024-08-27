@@ -78,11 +78,57 @@ const [zombieFighters, setZombieFighters] = useState([
     img: 'https://via.placeholder.com/150/602b9e',
   },
 ]);
+const [strength, setStrength] = useState(0)
+const [agility, setAgility] = useState(0)
+
+  const handleAddFighter = (zombieFighter) => {
+    if (zombieFighter.price > money) {
+      console.log('Not enough Money')
+    } else {
+      setTeam([...team, zombieFighter]);
+      setMoney(money - zombieFighter.price);
+      setStrength(strength + zombieFighter.strength)
+      setAgility(agility + zombieFighter.agility)
+    }
+  }
+
+  const handleRemoveFighter = (teamMember) => {
+    setTeam(team.filter(m => m !== teamMember))
+    setMoney(money + teamMember.price)
+    setStrength(strength - teamMember.strength)
+    setAgility(agility - teamMember.agility)
+  }
 
   return (
     <>
     <h1>Zombie Fighters</h1>
     <h2>Money: {money}</h2>
+    <h2>Strength: {strength}</h2>
+    <h2>Agility: {agility}</h2>
+    <h2>Teammates:</h2>
+    <ul>
+    {team.length === 0
+      ? 'Pick some team members!'
+      : team.map((teamMember, index) => (        
+          <li key={index}>
+            <img src={teamMember.img} alt="image of teammate"/>
+          <h4>
+          Name: {teamMember.name}
+          </h4>
+          <h4>
+          Price: {teamMember.price}
+          </h4>
+          <h4>
+          Strength: {teamMember.strength}
+          </h4>
+          <h4>
+          Agility: {teamMember.agility}
+          </h4>
+          <button onClick={() => handleRemoveFighter(teamMember)}>X</button>
+          </li>
+      ))
+    }
+    </ul>
     <ul>
       {zombieFighters.map((zombieFighter, index) => (
         <li key={index}>
@@ -99,7 +145,7 @@ const [zombieFighters, setZombieFighters] = useState([
           <h4>
           Agility: {zombieFighter.agility}
           </h4>
-          <button>Add</button>
+          <button onClick={() => handleAddFighter(zombieFighter)}>Add</button>
         </li>
       ))}
     </ul>
